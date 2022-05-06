@@ -38,7 +38,6 @@ module.exports = {
         let index = btnId[btnId.length - 1]
         index = +index
 
-        console.log(index)
         for(i = 0; i < posted.length; i++) {
             if(posted[i].id === index) {
                 posted.splice(i, 1)
@@ -46,5 +45,11 @@ module.exports = {
             }
         }
         res.status(200).send(posted)
+    },
+
+    changePost: (req, res) => {
+        for(i = 0; i < posted.length; i++) {
+            
+        }
     }
 }
