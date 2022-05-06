@@ -47,17 +47,17 @@ module.exports = {
         res.status(200).send(posted)
     },
 
-    // changePost: (req, res) => {
-    //     const {btnId} = req.params
-    //     let index = btnId[btnId.length - 1]
-    //     index = +index
+    changePost: (req, res) => {
+        const {btnId} = req.params
+        let index = btnId[btnId.length - 1]
+        index = +index
 
-    //     for(i = 0; i < posted.length; i++) {
-    //         if(posted[i].id === index) {
-    //             posted[i].postContent = res.body
-    //             break;
-    //         }
-    //     }
-    //     res.status(200).send(posted)
-    // }
+        for(i = 0; i < posted.length; i++) {
+            if(posted[i].id === index) {
+                posted[i].postContent = req.body.postContent
+                break;
+            }
+        }
+        res.status(200).send(posted)
+    }
 }

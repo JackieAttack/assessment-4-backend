@@ -69,29 +69,29 @@ const deleteComment = (event) => {
     
 }
 
-// const editComment = (event) => {
-//     event.preventDefault();
+const editComment = (event) => {
+    event.preventDefault();
 
 
-//     body = {
-//         postContent: inputText.value
-//     }
+    body = {
+        postContent: inputText.value
+    }
 
-//     axios.put(`http://localhost:4000/api/share`, body)
-//         .then((res) => {
-//             postBoard.innerHTML = ``
-//             const newArr = res.data;
-//             for(i = 0; i < newArr.length; i++) {
-//                 let newPost = document.createElement('div')
-//                 newPost.innerHTML = `<h3>${newArr[i].postContent}  <button id="edit-${newArr[i].id}">edit</button><button id="delete-${newArr[i].id}">delete</button></h3>`
-//                 postBoard.appendChild(newPost)
-//                 let newEditBtn = document.getElementById(`edit-${newArr[i].id}`)
-//                 let newDeleteBtn = document.getElementById(`delete-${newArr[i].id}`)
-//                 newEditBtn.addEventListener("click", editComment)
-//                 newDeleteBtn.addEventListener("click", deleteComment)
-//             }
-//         })
-// }
+    axios.put(`http://localhost:4000/api/share/${event.target.id}`, body)
+        .then((res) => {
+            postBoard.innerHTML = ``
+            const newArr = res.data;
+            for(i = 0; i < newArr.length; i++) {
+                let newPost = document.createElement('div')
+                newPost.innerHTML = `<h3>${newArr[i].postContent}  <button id="edit-${newArr[i].id}">edit</button><button id="delete-${newArr[i].id}">delete</button></h3>`
+                postBoard.appendChild(newPost)
+                let newEditBtn = document.getElementById(`edit-${newArr[i].id}`)
+                let newDeleteBtn = document.getElementById(`delete-${newArr[i].id}`)
+                newEditBtn.addEventListener("click", editComment)
+                newDeleteBtn.addEventListener("click", deleteComment)
+            }
+        })
+}
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getFortune)
